@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WHAOS Documentation</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f5f5f5; }
+    .layout { display: flex; min-height: 100vh; }
+    nav { width: 260px; background: #2d3748; color: #fff; padding: 1rem 0; flex-shrink: 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    nav h2 { margin: 0 1rem 0.5rem; font-size: 1rem; color: #a0aec0; text-transform: uppercase; }
+    nav a { display: block; padding: 0.4rem 1rem; color: #e2e8f0; text-decoration: none; font-size: 0.95rem; }
+    nav a:hover { background: #4a5568; }
+    main { flex: 1; padding: 2rem 3rem; max-width: 900px; background: #fff; margin: 1rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    h1 { color: #1a202c; border-bottom: 2px solid #0078D4; padding-bottom: 0.5rem; }
+    h2 { color: #2d3748; margin-top: 2rem; }
+    h3 { color: #4a5568; margin-top: 1.5rem; }
+    pre, code { background: #f7fafc; padding: 0.2em 0.4em; border-radius: 4px; font-family: 'Consolas', 'Monaco', monospace; font-size: 0.9em; }
+    pre { padding: 1rem; overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+    th, td { border: 1px solid #e2e8f0; padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: #edf2f7; }
+    ul, ol { margin: 0.5rem 0; }
+    section.doc { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid #e2e8f0; }
+    section.doc:last-child { border-bottom: none; }
+    .brand { padding: 0 1rem; font-weight: bold; font-size: 1.2rem; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav>
+      <div class="brand">WHAOS Docs</div>
+      <h2>Contents</h2>
+      <a href="#howtobuild">How to Build</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#assumptions">Assumptions</a>
+      <a href="#build-vs2022">Building with VS2022</a>
+      <a href="#filesystem">File System</a>
+      <a href="#users-security">Users & Security</a>
+      <a href="#core-apps">Core Applications</a>
+      <a href="#drivers">Drivers</a>
+      <a href="#input">Keyboard & Mouse</a>
+      <a href="#kernel-diagram">Kernel Diagram</a>
+      <a href="#virtualbox">VirtualBox</a>
+    </nav>
+    <main>
+
+      <section id="howtobuild" class="doc">
+        <h1>How to Build</h1>
+        <p>Complete step-by-step guide to building WHAOS from source.</p>
+        <h2>Prerequisites</h2>
+        <table>
+          <tr><th>Host</th><th>Use case</th></tr>
+          <tr><td>Ubuntu 24.04 LTS</td><td>ISO build, Linux native build</td></tr>
+          <tr><td>Windows + WSL2</td><td>VS2022 build for Linux target</td></tr>
+        </table>
+        <p><strong>Required:</strong> gcc 12+, CMake 3.20+, sudo, ~10 GB disk</p>
+        <h2>1. Build C components</h2>
+        <h3>Option A: Visual Studio 2022</h3>
+        <p>Install VS2022 with Linux development with C++, WSL2. In WSL: <code>sudo apt install build-essential cmake ninja-build libgtk-3-dev pkg-config</code></p>
+        <p>Open WHAOS folder, select Linux target, Build → Build All.</p>
+        <h3>Option B: Linux native (make)</h3>
+        <pre>make init
+make desktop</pre>
+        <h2>2. Build the ISO (Linux only)</h2>
+        <pre>sudo apt-get install -y debootstrap xorriso grub-pc-bin grub-efi-amd64-bin squashfs-tools rsync wget
+./scripts/build_iso.sh 1.0</pre>
+        <p><strong>Output:</strong> <code>output/whacos-1.0-amd64.iso</code></p>
+        <h2>3. Test in VirtualBox</h2>
+        <p>Create VM (Linux 64-bit, 2 GB RAM, 20 GB disk), attach ISO, boot.</p>
+      </section>
+
+      <section id="architecture" class="doc">
+        <h1>WHAOS Architecture</h1>
+        <p><strong>WHAOS</strong> is a 64-bit OS for x86-64 (AMD64), designed for VirtualBox with a Windows 7–like desktop.</p>
+        <h2>1. Boot and Kernel</h2>
+        <p>Boot flow: BIOS/UEFI → GRUB2 → WHAOS Kernel → init/whad</p>
+        <p>Kernel: Linux-based, hybrid monolithic. Drivers: Storage (IDE/AHCI), VMSVGA, PS/2, Intel e1000.</p>
+        <h2>2. File System</h2>
+        <p>Root: ext4. Layout: /bin, /boot, /etc, /home, /usr, etc.</p>
+        <h2>3. GUI Stack</h2>
+        <p>X11 (or Wayland) → Compositor → WHAOS Desktop (Start Menu, Taskbar, System Tray)</p>
+        <h2>4. Core Apps</h2>
+        <p>File Explorer, Control Center, Text Editor, Terminal, Task Monitor</p>
+      </section>
+
+      <section id="assumptions" class="doc">
+        <h1>WHAOS Assumptions</h1>
+        <p><strong>Build host:</strong> Ubuntu 24.04 LTS (or Debian 12, Fedora 40)</p>
+        <p><strong>Approach:</strong> Path A – Linux kernel + minimal userspace + X11 + WHAOS desktop</p>
+        <p><strong>VirtualBox:</strong> 7.x or 6.1+</p>
+        <p><strong>Legal:</strong> GPL/MIT/BSD, no Windows code or assets</p>
+      </section>
+
+      <section id="build-vs2022" class="doc">
+        <h1>Building with Visual Studio 2022</h1>
+        <h2>Method 1: CMake (recommended)</h2>
+        <p>File → Open → Folder. Select Linux/WSL target. Build → Build All.</p>
+        <h2>Method 2: Solution</h2>
+        <p>File → Open → WHAOS.sln. Platform: Linux. Build Solution (F7).</p>
+        <p><strong>whad</strong> – no extra deps. <strong>whaos-panel</strong> – needs libgtk-3-dev on Linux.</p>
+      </section>
+
+      <section id="filesystem" class="doc">
+        <h1>File System and Storage</h1>
+        <h2>Partition Layout</h2>
+        <table>
+          <tr><th>Partition</th><th>Size</th><th>Type</th><th>Mount</th></tr>
+          <tr><td>/dev/sda1</td><td>512 MiB</td><td>EFI</td><td>/boot/efi</td></tr>
+          <tr><td>/dev/sda2</td><td>rest</td><td>ext4</td><td>/</td></tr>
+        </table>
+        <h2>Formatting (GPT + EFI)</h2>
+        <pre>parted -s /dev/sda mklabel gpt
+parted -s /dev/sda mkpart primary fat32 1MiB 513MiB
+parted -s /dev/sda mkpart primary ext4 513MiB 100%
+mkfs.vfat -F 32 -n EFI /dev/sda1
+mkfs.ext4 -L WHAOS_ROOT /dev/sda2</pre>
+        <h2>Root Layout</h2>
+        <p>/bin, /boot, /dev, /etc, /home, /lib, /proc, /sbin, /usr, /var, etc.</p>
+      </section>
+
+      <section id="users-security" class="doc">
+        <h1>Users and Security</h1>
+        <p><strong>init:</strong> whad (PID 1)</p>
+        <p><strong>Users:</strong> root (UID 0), whauser (UID 1000)</p>
+        <p><strong>Groups:</strong> root, wheel, users, audio, video</p>
+        <p><strong>Permissions:</strong> Unix rwxrwxrwx, optional ACLs</p>
+      </section>
+
+      <section id="core-apps" class="doc">
+        <h1>Core WHAOS Applications</h1>
+        <table>
+          <tr><th>App</th><th>Purpose</th><th>Base</th></tr>
+          <tr><td>WHAOS File Explorer</td><td>File manager</td><td>PCManFM/Thunar</td></tr>
+          <tr><td>WHAOS Control Center</td><td>Settings</td><td>GTK/LXControl</td></tr>
+          <tr><td>WHAOS Text Editor</td><td>Text editing</td><td>gedit/Geany</td></tr>
+          <tr><td>WHAOS Terminal</td><td>CLI shell</td><td>lxterminal</td></tr>
+          <tr><td>WHAOS Task Monitor</td><td>Process viewer</td><td>GNOME System Monitor</td></tr>
+        </table>
+      </section>
+
+      <section id="drivers" class="doc">
+        <h1>WHAOS Drivers (VirtualBox)</h1>
+        <table>
+          <tr><th>Device</th><th>Driver</th><th>Notes</th></tr>
+          <tr><td>Storage</td><td>ata_piix, ahci</td><td>SATA</td></tr>
+          <tr><td>Graphics</td><td>vmwgfx</td><td>VMSVGA</td></tr>
+          <tr><td>Keyboard</td><td>atkbd</td><td>PS/2</td></tr>
+          <tr><td>Mouse</td><td>psmouse</td><td>PS/2</td></tr>
+          <tr><td>Network</td><td>e1000</td><td>Intel PRO/1000</td></tr>
+        </table>
+        <p>Kernel: CONFIG_KEYBOARD_ATKBD=y, CONFIG_MOUSE_PS2=y, CONFIG_E1000=y, CONFIG_DRM_VMWGFX=y</p>
+      </section>
+
+      <section id="input" class="doc">
+        <h1>Keyboard and Mouse Support</h1>
+        <h2>Kernel Level</h2>
+        <p>PS/2 keyboard (atkbd), PS/2 mouse (psmouse), evdev exposes to X11</p>
+        <h2>Desktop Level</h2>
+        <p><strong>Keyboard:</strong> Super L/R – Toggle Start menu</p>
+        <p><strong>Mouse:</strong> Left click Start – open menu. Right click clock – context menu.</p>
+      </section>
+
+      <section id="kernel-diagram" class="doc">
+        <h1>Kernel Architecture Diagram</h1>
+        <pre>
+BIOS/UEFI → GRUB2 → WHAOS Kernel → whad (PID 1)
+                              ↓
+         User Apps ← Syscalls ← VFS, Scheduler, Memory
+                              ↓
+         Drivers: IDE, AHCI, VMSVGA, PS/2, e1000
+                              ↓
+         VirtualBox Hardware
+        </pre>
+      </section>
+
+      <section id="virtualbox" class="doc">
+        <h1>VirtualBox Configuration</h1>
+        <table>
+          <tr><th>Setting</th><th>Value</th></tr>
+          <tr><td>Type</td><td>Linux 64-bit</td></tr>
+          <tr><td>RAM</td><td>2048 MB</td></tr>
+          <tr><td>Disk</td><td>20 GB VDI</td></tr>
+          <tr><td>Graphics</td><td>VMSVGA, 128 MB VRAM</td></tr>
+        </table>
+        <h2>CLI (VBoxManage)</h2>
+        <pre>VBoxManage createvm --name "WHAOS" --ostype "Linux_64" --register
+VBoxManage modifyvm "WHAOS" --memory 2048 --cpus 2 --vram 128
+VBoxManage storagectl "WHAOS" --name "IDE" --add ide
+VBoxManage storageattach "WHAOS" --storagectl "IDE" --port 1 --device 0 --type dvddrive --medium "whacos-1.0-amd64.iso"
+VBoxManage modifyvm "WHAOS" --boot1 dvd --boot2 disk</pre>
+        <p>First boot: Boot from ISO → Install or Live → Reboot after install</p>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
