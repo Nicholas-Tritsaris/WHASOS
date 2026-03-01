@@ -1,0 +1,68 @@
+/*
+ * WHAOS Theme - Windows 7-inspired, original design
+ * Glass-like transparency, soft gradients, WHAOS accent
+ * GPL-2.0
+ */
+
+/* WHAOS color palette */
+:root {
+    --whaos-accent: #0078D4;
+    --whaos-accent-hover: #1084D8;
+    --whaos-accent-active: #006CBE;
+    --whaos-taskbar: rgba(40, 44, 52, 0.9);
+    --whaos-window-bg: #f0f0f0;
+    --whaos-titlebar: linear-gradient(180deg, #e8e8e8 0%, #d0d0d0 100%);
+    --whaos-border: #a0a0a0;
+}
+
+/* Window decorations - Aero-inspired glass */
+.whaos-window {
+    background: var(--whaos-window-bg);
+    border: 1px solid var(--whaos-border);
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.whaos-titlebar {
+    background: var(--whaos-titlebar);
+    border-bottom: 1px solid var(--whaos-border);
+    padding: 4px 8px;
+    min-height: 28px;
+}
+
+/* Start menu panel */
+.whaos-start-panel {
+    background: rgba(60, 64, 72, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.whaos-start-button {
+    background: var(--whaos-accent);
+    color: white;
+    border: none;
+}
+
+.whaos-start-button:hover {
+    background: var(--whaos-accent-hover);
+}
+
+/* Taskbar */
+.whaos-taskbar {
+    background: var(--whaos-taskbar);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.whaos-task-button {
+    background: transparent;
+    color: white;
+}
+
+.whaos-task-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.whaos-task-button:active {
+    background: var(--whaos-accent);
+}

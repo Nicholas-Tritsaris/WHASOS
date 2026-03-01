@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "whad", "whad\whad.vcxproj", "{A1B2C3D4-1111-2222-3333-444444444401}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "whaos-panel", "whaos-panel\whaos-panel.vcxproj", "{A1B2C3D4-1111-2222-3333-444444444402}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Linux = Debug|Linux
+		Release|Linux = Release|Linux
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1B2C3D4-1111-2222-3333-444444444401}.Debug|Linux.ActiveCfg = Debug|Linux
+		{A1B2C3D4-1111-2222-3333-444444444401}.Debug|Linux.Build.0 = Debug|Linux
+		{A1B2C3D4-1111-2222-3333-444444444401}.Release|Linux.ActiveCfg = Release|Linux
+		{A1B2C3D4-1111-2222-3333-444444444401}.Release|Linux.Build.0 = Release|Linux
+		{A1B2C3D4-1111-2222-3333-444444444402}.Debug|Linux.ActiveCfg = Debug|Linux
+		{A1B2C3D4-1111-2222-3333-444444444402}.Debug|Linux.Build.0 = Debug|Linux
+		{A1B2C3D4-1111-2222-3333-444444444402}.Release|Linux.ActiveCfg = Release|Linux
+		{A1B2C3D4-1111-2222-3333-444444444402}.Release|Linux.Build.0 = Release|Linux
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
