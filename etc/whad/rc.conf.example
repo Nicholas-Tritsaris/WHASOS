@@ -1,0 +1,26 @@
+#!/bin/sh
+# WHAOS Daemon Manager (whad) - init script
+# Runs at boot after basic mounts
+
+hostname whaos
+
+# Loopback
+ifconfig lo 127.0.0.1 up
+
+# D-Bus (for desktop)
+if [ -x /usr/bin/dbus-daemon ]; then
+    /usr/bin/dbus-daemon --system &
+fi
+
+# udev (if not already running)
+if [ -x /sbin/udevd ]; then
+    /sbin/udevd --daemon
+fi
+
+# Start X11 / display manager
+if [ -x /usr/bin/lightdm ] || [ -x /usr/sbin/gdm ]; then
+    (sleep 2; /usr/bin/lightdm 2>/dev/null || /usr/sbin/gdm) &
+elif [ -x /usr/bin/startx ]; then
+    # Console X
+    (sleep 2; su - whauser -c startx) &
+fi

@@ -1,0 +1,15 @@
+# WHAOS fstab example
+# /etc/fstab
+
+# Root (adjust device/label as needed)
+LABEL=WHAOS_ROOT  /       ext4    defaults,errors=remount-ro  0  1
+
+# Optional EFI
+# LABEL=EFI  /boot/efi  vfat    umask=0077  0  1
+
+# Virtual filesystems
+proc            /proc   proc    defaults        0  0
+sysfs           /sys    sysfs   defaults        0  0
+devtmpfs        /dev    devtmpfs    mode=0755   0  0
+tmpfs           /run    tmpfs   defaults        0  0
+tmpfs           /tmp    tmpfs   defaults        0  0
