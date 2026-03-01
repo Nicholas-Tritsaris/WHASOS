@@ -234,103 +234,155 @@ WHAOS/
 
 ## License
 
-GPL-2.0 / MIT / BSD where applicable. No proprietary Windows assets.  
-This is not associated with Microsoft or Products of Windows.
+GPL-2.0 / MIT / BSD where applicable. No proprietary Windows assets.
+---
+created: 2026-02-28T20:55:45-05:00
+modified: 2026-02-28T20:55:50-05:00
+---
+
+# WHASOS
+### Work Health and Safety Operating System
+> INTERNAL CLASSIFIED SYSTEM  
+> Unauthorized access is prohibited.
 
 ---
 
-## SEALED ARCHIVE — AUTHORIZED PERSONNEL ONLY
-TOP SECRET — Access requires Level 4 clearance and dual‑factor authorization.  
-Viewing, copying, or transmitting any portion of this archive without explicit authorization is prohibited and will be logged.
+## ███████████████████████████████
+## SYSTEM OVERVIEW
+## ███████████████████████████████
+
+**WHASOS (Work Health and Safety Operating System)** is a secure, classified-grade operating system project designed for integration into a high-security game environment.
+
+WHASOS combines:
+
+- Workplace Health & Safety compliance infrastructure
+- Government-grade access control systems
+- SCP-style anomaly containment documentation
+- Intelligence agency–inspired secure operating architecture
+
+This system is designed to function as a **real, modular operating system**, while maintaining immersive classified-world aesthetics.
 
 ---
 
-### ███ SEALED INDEX ███
-- /sealed/ANOMALY_REGISTRY.md — ███████████████████████████████  
-- /sealed/OP_PROTOCOLS/ — ███████████████████████████████  
-- /sealed/KEYVAULT/ — ███████████████████████████████  
-- /sealed/LOGS/2026-02-28/ — ███████████████████████████████
+## ACCESS WARNING
+
+This system simulates restricted federal infrastructure.
+
+Any unauthorized access attempts within the game environment may trigger:
+
+- System lockdown
+- Activity logging
+- Account suspension
+- Simulated prosecution notices
+- Clearance revocation
+
+All activity is logged and audited.
 
 ---
 
-### ███ SEALED ENTRY: ANOMALY 0xA7F3 ███
-Designation: ███████████  
-Containment Class: █████ / █████ / █████  
-Summary: █████████████████████████████████████████████████████████████████████████████████  
-Observed Effects: ████████████████████████████████████████████████████████████████  
-Containment Protocol (redacted):  
-- Step 1: █████████████████████████████  
-- Step 2: █████████████████████████████  
-- Emergency Escalation: █████████████████████████████
+## CORE OBJECTIVES
+
+- Build a functional operating system architecture
+- Implement multi-tier clearance authentication
+- Create SCP-style secure documentation systems
+- Integrate WHS compliance monitoring modules
+- Provide immersive classified UI/UX
 
 ---
 
-### ███ SEALED ENTRY: OPERATIONAL KEYS ███
-Key Vault Index: KV-██-2026-02-28  
-Active Compartment Keys (placeholders):  
-- COMP-A — XXXX-████-XXXX-████ (access: Level 3+)  
-- COMP-B — YYYY-████-YYYY-████ (access: Level 4+)  
-- COMP-C — ZZZZ-████-ZZZZ-████ (access: Level 5; dual sign required)
+## PRIMARY MODULES
 
-Key Handling Notes:  
-- Keys are stored in hardware HSM emulation; export is prohibited.  
-- All key usage must be recorded in sealed/KEYVAULT/USAGE_LOGS.md and signed by two authorized operators.
+### 🔐 Clearance Control Subsystem
+- Multi-level authorization
+- Role-based access restrictions
+- Redaction enforcement
+- Session auditing
 
----
+### 📁 Secure Containment Database
+- SCP-style object registry
+- Classification levels (SAFE / EUCLID / KETER equivalent)
+- Incident reporting
+- Document redaction engine
 
-### ███ SEALED ENTRY: INCIDENT LOG (EXCERPT) ███
-[2026-02-28T20:52:03-05:00] [REDACTED] — Anomaly detection triggered on node: ███-NODE-17  
-[2026-02-28T20:53:11-05:00] [REDACTED] — Containment protocol initiated; network partition applied  
-[2026-02-28T20:54:02-05:00] [REDACTED] — Operator authentication failure; escalation to Level 4  
-[2026-02-28T20:55:12-05:00] [REDACTED] — Evidence snapshot stored in sealed/LOGS/2026-02-28/
+### ⚠ Workplace Hazard System
+- Risk assessment tools
+- Hazard reporting
+- Compliance violations tracking
+- Escalation engine
 
----
-
-### ███ SEALED ENTRY: ENCRYPTED BLOB (SAMPLE) ███
-Blob ID: BLOB-7F-20260228  
-Cipher: AES-256-GCM (metadata redacted)  
-Payload (base64 placeholder): U2VhbGVkQmxvYl9QbGFjZWhvbGRlcj0gW1JFREFDVEVEXQ==  
-Notes: Decryption requires COMP-C and dual operator signature.
-
----
-
-### ███ SEALED ENTRY: REDACTION ENGINE RULES ███
-- Documents marked [REDACTED] must be redacted at the paragraph and metadata level.  
-- Automated redaction engine applies pattern rules: PII, geo-coordinates, operational keys, and containment vectors.  
-- Redaction audit trail is immutable and stored in sealed/REDACTION_AUDIT.log.
+### 🛡 Security Enforcement Layer
+- Intrusion detection
+- Access attempt logging
+- Automatic lockout protocols
+- Tamper detection
 
 ---
 
-### ███ SEALED ENTRY: EMERGENCY PROTOCOL SUMMARY ███
-- Trigger Conditions: Any unauthorized access attempt to /sealed/ or repeated failed authentications beyond threshold.  
-- Immediate Actions: Network isolation; session token invalidation; alert to Level 5 operators.  
-- Recovery: Recovery requires signed approval from two Level 5 operators and a validated integrity check of KERNEL_DESIGN.md.
+## SYSTEM DESIGN PHILOSOPHY
+
+WHASOS is engineered around:
+
+- Zero-trust architecture
+- Principle of least privilege
+- Compartmentalized access domains
+- Immutable audit logging
+- Modular extensibility
 
 ---
 
-### ███ SEALED MEMO: INTERNAL AUTHORIZATION TEMPLATE ███
-AUTHORIZATION: [TOP SECRET]  
-APPROVED_BY: [REDACTED]  
-SIGNATURES_REQUIRED: 2  
-CLEARANCE_MINIMUM: LEVEL_4  
-VALID_UNTIL: [REDACTED]  
-NOTES: All approvals must be recorded in sealed/AUTH_LOGS.md
+## ARCHITECTURE SUMMARY
+
+WHASOS is structured in layered form:
+
+1. Kernel Layer (core system control)
+2. System Services Layer
+3. Security & Authentication Layer
+4. Application Layer (WHS + SCP modules)
+5. User Interface Layer
+
+Full technical details are documented in:
+
+> `KERNEL_DESIGN.md`
 
 ---
 
-## SEALING & REDACTION LEGEND
+## PROJECT STATUS
 
-- █████ — Full redaction (sensitive content removed)  
-- [REDACTED] — Inline redaction marker (metadata removed)  
-- COMP-* — Compartment identifiers (access controlled)  
-- BLOB-* — Encrypted payload identifiers
-
----
-
-END OF SEALED ARCHIVE
+> DEVELOPMENT PHASE: ALPHA  
+> Security architecture defined  
+> Kernel structure under development  
+> Core modules in planning stage  
 
 ---
 
-END OF FILE
+## ROADMAP
 
-Which clearance level should the sealed appendix be restricted to?
+- Custom secure boot environment
+- Role-based UI rendering
+- Multiplayer secure terminal network
+- Encrypted internal messaging layer
+- AI-powered anomaly analysis
+- Modular update system
+
+---
+
+## DISCLAIMER
+
+WHASOS is a fictional classified system created for game integration and operating system development experimentation.
+
+Any references to intelligence agencies or prosecution are purely thematic.
+
+---
+
+## AUTHOR
+
+Nicholas Tritsaris  
+GitHub: https://github.com/Nicholas-Tritsaris
+
+---
+
+> END OF FILE
+
+// No merge conflicts detected in this file. README appears clean and well-formatted. 
+// If you expected a merge conflict here, please provide the conflicting sections so they may be resolved.
+
