@@ -3,10 +3,44 @@ created: 2026-02-28T20:55:45-05:00
 modified: 2026-03-02T09:31:50-09:31
 ---
 
-# WHASOS
+---
+
+# WHAOS
+A 64‑bit operating system for x86‑64 (AMD64) with a Windows 7–like desktop experience. Runs in VirtualBox; no proprietary Windows assets.
 ### Work Health and Safety Operating System
 > INTERNAL CLASSIFIED SYSTEM
 > Unauthorized access is prohibited.
+
+## Quick Start (summary)
+
+1. Build C components with Visual Studio 2022 (see docs/BUILD_VS2022.md).
+2. Build ISO on Ubuntu 24.04: `./scripts/build_iso.sh 1.0`
+3. Create VirtualBox VM and attach `output/whacos-1.0-amd64.iso`
+4. Boot and install or run live.
+
+## Documentation index
+
+ARCHITECTURE.md; HOWTOBUILD.md; ASSUMPTIONS.md; FILESYSTEM.md; USERS_AND_SECURITY.md; CORE_APPS.md; INPUT.md; VIRTUALBOX.md
+
+## Build prerequisites (summary)
+
+- Ubuntu 24.04 LTS (or Debian 12 / Fedora 40)
+- sudo/root access
+- ~10 GB free disk space
+- Install dependencies: `debootstrap xorriso grub-pc-bin grub-efi-amd64-bin squashfs-tools rsync wget build-essential`
+
+## Project structure (summary)
+
+WHAOS/
+├── boot/grub/
+├── docs/
+├── scripts/
+├── src/
+│   ├── desktop/
+│   ├── init/
+│   ├── installer/
+│   └── kernel/
+└── output/
 
 ## SYSTEM OVERVIEW
 
@@ -73,42 +107,6 @@ WHASOS is fictional for game integration and experimentation. References to agen
 
 Nicholas Tritsaris
 GitHub: https://github.com/Nicholas-Tritsaris
-
----
-
-# WHAOS
-A 64‑bit operating system for x86‑64 (AMD64) with a Windows 7–like desktop experience. Runs in VirtualBox; no proprietary Windows assets.
-
-## Quick Start (summary)
-
-1. Build C components with Visual Studio 2022 (see docs/BUILD_VS2022.md).
-2. Build ISO on Ubuntu 24.04: `./scripts/build_iso.sh 1.0`
-3. Create VirtualBox VM and attach `output/whacos-1.0-amd64.iso`
-4. Boot and install or run live.
-
-## Documentation index
-
-ARCHITECTURE.md; HOWTOBUILD.md; ASSUMPTIONS.md; FILESYSTEM.md; USERS_AND_SECURITY.md; CORE_APPS.md; INPUT.md; VIRTUALBOX.md
-
-## Build prerequisites (summary)
-
-- Ubuntu 24.04 LTS (or Debian 12 / Fedora 40)
-- sudo/root access
-- ~10 GB free disk space
-- Install dependencies: `debootstrap xorriso grub-pc-bin grub-efi-amd64-bin squashfs-tools rsync wget build-essential`
-
-## Project structure (summary)
-
-WHAOS/
-├── boot/grub/
-├── docs/
-├── scripts/
-├── src/
-│   ├── desktop/
-│   ├── init/
-│   ├── installer/
-│   └── kernel/
-└── output/
 
 ## License
 
