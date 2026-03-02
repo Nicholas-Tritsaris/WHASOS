@@ -1,6 +1,6 @@
 --- 
 created: 2026-02-28T20:55:45-05:00
-modified: 2026-03-02T09:31:50-09:31
+modified: 2026-03-02T09:31:50-09:00
 ---
 
 ---
@@ -114,7 +114,7 @@ GPL-2.0 / MIT / BSD where applicable. Not associated with Microsoft.
 
 ---
 
-## SEALED ARCHIVE — AUTHORIZED PERSONNEL ONLY
+## SEALED ARCHIVE �� AUTHORIZED PERSONNEL ONLY
 
 TOP SECRET — Access requires Level 4 clearance and dual‑factor authorization. Viewing, copying, or transmitting any portion of this archive without explicit authorization is prohibited and will be logged.
 
