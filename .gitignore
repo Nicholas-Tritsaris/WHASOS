@@ -1,2 +1,27 @@
+# Build artifacts
+build/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/.cmake/
+**/CMakeScripts/
+**/Testing/
+**/*.ninja
+**/compile_commands.json
+output/
+*.iso
 
-.fake
+# IDE and tooling
+.vscode/
+.qodo/
+*.user
+*.suo
+*.VC.db
+*.VC.VC.opendb
+*.swp
+*.swo
+
+# OS-specific
+Thumbs.db
+.DS_Store
+ehthumbs.db
+Desktop.ini
